@@ -58,7 +58,7 @@ var init = function (window) {
                 
             }
             // TODO 5c) if the circle has gone past of the BOTTOM side of the screen then place it OFF-SCREEN TOP
-            else if ( / * Fill me in! * / ) {
+            else if ( / * canvas.height * / ) {
             
             }
             // YOUR TODO 5 CODE ENDS HERE //////////////////////////
