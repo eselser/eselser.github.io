@@ -24,6 +24,8 @@ var background = function (window) {
         
         // container which will be returned
         var background;
+        var tree;
+
         
         // ANIMATION VARIABLES HERE:
         
@@ -36,17 +38,32 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'dimgrey');
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
-            
-            
+            var circle;
+            for(var i=0;i<100;i++) {
+            circle = draw.circle(5,'Yellow','LightGray',1);
+            circle.x = canvasWidth*Math.random();
+            circle.y = groundY*Math.random();
+            background.addChild(circle);
+            }
+           var moon = draw.bitmap('img/moon.png');
+        moon.x = -50;   
+        moon.y = 25;
+        moon.scaleX = 1.0;
+        moon.scaleY = 1.0;
+        background.addChild(moon);
+        
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             
             // TODO 4: Part 1 - Add a tree
-            
+            tree = draw.bitmap('img/tree.png');
+            tree.x = 0;
+            tree.y = 0;
+            background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
         
