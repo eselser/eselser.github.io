@@ -25,7 +25,7 @@ var background = function (window) {
         // container which will be returned
         var background;
         var tree;
-
+        var buildings = [];
         
         // ANIMATION VARIABLES HERE:
         
@@ -44,25 +44,33 @@ var background = function (window) {
             // TODO: 3 - Add a moon and starfield
             var circle;
             for(var i=0;i<100;i++) {
-            circle = draw.circle(5,'Yellow','LightGray',1);
-            circle.x = canvasWidth*Math.random();
-            circle.y = groundY*Math.random();
-            background.addChild(circle);
+                circle = draw.circle(5,'Yellow','LightGray',1);
+                circle.x = canvasWidth*Math.random();
+                circle.y = groundY*Math.random();
+                background.addChild(circle);
             }
            var moon = draw.bitmap('img/moon.png');
-        moon.x = -50;   
-        moon.y = 25;
-        moon.scaleX = 1.0;
-        moon.scaleY = 1.0;
-        background.addChild(moon);
-        
+            moon.x = -50;   
+            moon.y = 25;
+            moon.scaleX = 1.0;
+            moon.scaleY = 1.0;
+            background.addChild(moon);
+            
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
-            
+            var buildingHeight = 3000;
+            var building;
+            for(var i=0;i<7;++i) {
+                building = draw.rect(75,buildingHeight,'LightGray','Black',1);
+                building.x = 200*i;
+                building.y = groundY-buildingHeight;
+                background.addChild(building);
+                buildings.push(building);
+            }
+
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap('img/tree.png');
-            tree.x = 0;
-            tree.y = 0;
+            tree.x = 1000;
+            tree.y = 200;
             background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
@@ -75,12 +83,20 @@ var background = function (window) {
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
-            
             // TODO 4: Part 2 - Move the tree!
-            
-            
+            tree.x = tree.x - 5;
+            if(tree.x < -200) {
+                tree.x = canvasWidth;
+            }
             // TODO 5: Part 2 - Parallax
-            
+            for(var i = 0; i < buildings.length; i++){
+                var building = buildings[i];
+                building.x = building.x - 3;
+                if (building.x < -200) {
+                    building.x = canvasWidth;
+                }   
+            }
+
 
         } // end of update function - DO NOT DELETE
         
